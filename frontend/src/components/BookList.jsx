@@ -7,6 +7,8 @@ import React, {
 
 import axios from "axios";
 
+import Modal from "./Modal";
+
 const BookList = () => {
     const [books, setBooks] = useState([]);
     const [filteredBooks, setFilteredBooks] = useState([]);
@@ -21,6 +23,9 @@ const BookList = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedBook, setSelectedBook] = useState(null);
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -72,6 +77,16 @@ const BookList = () => {
             }
             setBooks([]);
         }
+    };
+
+    const handleBookClick = (book) => {
+        setSelectedBook(book);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setSelectedBook(null);
     };
 
     const logout = () => {
@@ -216,9 +231,9 @@ const BookList = () => {
                         <tbody>
                             {currentBooks.map(book => (
                                 <tr key={book.id}>
-                                    <td>{book.title}</td>
-                                    <td>{book.author}</td>
-                                    <td>{book.description}</td>
+                                    <td onClick={() => handleBookClick(book)}>{book.title}</td>
+                                    <td onClick={() => handleBookClick(book)}>{book.author}</td>
+                                    <td onClick={() => handleBookClick(book)}>{book.description}</td>
                                     <td>
                                         <button onClick={() => startEditing(book)}>Edit</button>
                                         <button onClick={() => deleteBook(book.id)}>Delete</button>
@@ -241,6 +256,7 @@ const BookList = () => {
                     </div>
                 </>
             )}
+            <Modal isOpen={modalOpen} onClose={closeModal} book={selectedBook} />
         </div>
     );
 };
