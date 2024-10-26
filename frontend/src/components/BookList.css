@@ -1,0 +1,111 @@
+.book-list-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+input,
+textarea,
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    /* Header background color */
+    color: white;
+    /* Header text color */
+}
+
+td {
+    background-color: #f2f2f2;
+    /* Light gray background for table rows */
+    color: #333;
+    /* Dark text for readability */
+}
+
+tr:nth-child(even) td {
+    background-color: #e7f7e7;
+    /* Slightly darker for even rows */
+}
+
+tr:hover {
+    background-color: #d0e9d0;
+    /* Light green on row hover */
+}
+
+@media (max-width: 600px) {
+
+    th,
+    td {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .book-list-container {
+        margin: 20px 600px;
+        /* Margin 400px untuk tampilan desktop */
+    }
+}
+
+/* pagination */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination button.active {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
